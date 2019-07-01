@@ -49,7 +49,7 @@ public:
 	AmeepattackgameCharacter();
 
 	float PlayerSpeed;
-	void BeginPlay();
+	/**void BeginPlay();
 	void SprintStart();
 	void SprintStop();
 	void Tick(float DeltaTime);
@@ -62,6 +62,8 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Stamina")
 		float MaxStamina;
+		
+	**/
 
 protected:
 	virtual void BeginPlay();
@@ -145,7 +147,7 @@ protected:
 	 * @param	InputComponent	The input component pointer to bind controls to
 	 * @returns true if touch controls were enabled.
 	 */
-	bool EnableTouchscreenMovement(UInputComponent* InputComponent);
+	//bool EnableTouchscreenMovement(UInputComponent* InputComponent);
 
 public:
 	/** Returns Mesh1P subobject **/

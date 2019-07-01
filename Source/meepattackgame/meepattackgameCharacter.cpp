@@ -121,7 +121,7 @@ void AmeepattackgameCharacter::SetupPlayerInputComponent(class UInputComponent* 
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AmeepattackgameCharacter::OnFire);
 
 	// Enable touchscreen input
-	EnableTouchscreenMovement(PlayerInputComponent);
+	//EnableTouchscreenMovement(PlayerInputComponent);
 
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AmeepattackgameCharacter::OnResetVR);
 
@@ -283,7 +283,8 @@ void AmeepattackgameCharacter::LookUpAtRate(float Rate)
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
-void AmeepattackgameCharacter::BeginPlay() {
+
+/*void AmeepattackgameCharacter::BeginPlay() {
 	Super::BeginPlay();
 	//Grab's intial speed
 	PlayerSpeed = GetCharacterMovement()->MaxWalkSpeed;
@@ -333,3 +334,4 @@ bool AmeepattackgameCharacter::EnableTouchscreenMovement(class UInputComponent* 
 	
 	return false;
 }
+*/
