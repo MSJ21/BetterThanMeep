@@ -10,6 +10,7 @@
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "MotionControllerComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "XRMotionControllerBase.h" // for FXRMotionControllerBase::RightHandSourceId
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
@@ -103,6 +104,11 @@ void AmeepattackgameCharacter::BeginPlay()
 		VR_Gun->SetHiddenInGame(true, true);
 		Mesh1P->SetHiddenInGame(false, true);
 	}
+
+	//Grab's intial speed
+	PlayerSpeed = GetCharacterMovement()->MaxWalkSpeed;
+	MaxStamina = 5;
+	CurrentStamina = MaxStamina;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -136,6 +142,10 @@ void AmeepattackgameCharacter::SetupPlayerInputComponent(class UInputComponent* 
 	PlayerInputComponent->BindAxis("TurnRate", this, &AmeepattackgameCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &AmeepattackgameCharacter::LookUpAtRate);
+
+	//Sprinting Functionality
+	InputComponent->BindKey(EKeys::LeftShift, IE_Pressed, this, &AmeepattackgameCharacter::SprintStart);
+	InputComponent->BindKey(EKeys::LeftShift, IE_Released, this, &AmeepattackgameCharacter::SprintStop);
 }
 
 void AmeepattackgameCharacter::OnFire()
@@ -284,14 +294,6 @@ void AmeepattackgameCharacter::LookUpAtRate(float Rate)
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 
-/*void AmeepattackgameCharacter::BeginPlay() {
-	Super::BeginPlay();
-	//Grab's intial speed
-	PlayerSpeed = GetCharacterMovement()->MaxWalkSpeed;
-	MaxStamina = 5;
-	CurrentStamina = MaxStamina;
-}
-
 void AmeepattackgameCharacter::SprintStart() {
 	//double speed
 	GetCharacterMovement()->MaxWalkSpeed = PlayerSpeed * 2;
@@ -303,6 +305,7 @@ void AmeepattackgameCharacter::SprintStop() {
 	GetCharacterMovement()->MaxWalkSpeed = PlayerSpeed;
 	IsSprinting = false;
 }
+
 void AmeepattackgameCharacter::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 	if (IsSprinting) {
@@ -319,19 +322,3 @@ void AmeepattackgameCharacter::Tick(float DeltaTime) {
 		}
 	}
 }
-
-bool AmeepattackgameCharacter::EnableTouchscreenMovement(class UInputComponent* PlayerInputComponent)
-{
-	if (FPlatformMisc::SupportsTouchInput() || GetDefault<UInputSettings>()->bUseMouseForTouch)
-	{
-		PlayerInputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AmeepattackgameCharacter::BeginTouch);
-		PlayerInputComponent->BindTouch(EInputEvent::IE_Released, this, &AmeepattackgameCharacter::EndTouch);
-
-		//Commenting this out to be more consistent with FPS BP template.
-		//PlayerInputComponent->BindTouch(EInputEvent::IE_Repeat, this, &AmeepattackgameCharacter::TouchUpdate);
-		return true;
-	}
-	
-	return false;
-}
-*/

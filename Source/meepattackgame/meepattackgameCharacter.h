@@ -49,7 +49,6 @@ public:
 	AmeepattackgameCharacter();
 
 	float PlayerSpeed;
-	/**void BeginPlay();
 	void SprintStart();
 	void SprintStop();
 	void Tick(float DeltaTime);
@@ -62,8 +61,6 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Stamina")
 		float MaxStamina;
-		
-	**/
 
 protected:
 	virtual void BeginPlay();
