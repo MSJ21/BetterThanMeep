@@ -296,7 +296,7 @@ void AmeepattackgameCharacter::LookUpAtRate(float Rate)
 
 void AmeepattackgameCharacter::SprintStart() {
 	//double speed
-	GetCharacterMovement()->MaxWalkSpeed = PlayerSpeed * 2;
+	GetCharacterMovement()->MaxWalkSpeed = PlayerSpeed * 1.5;
 	IsSprinting = true;
 }
 
