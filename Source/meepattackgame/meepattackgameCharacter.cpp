@@ -124,7 +124,7 @@ void AmeepattackgameCharacter::SetupPlayerInputComponent(class UInputComponent* 
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	// Bind fire event
-	PlayerInputComponent->BindAction("Fire", IE_Repeat, this, &AmeepattackgameCharacter::OnFire);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AmeepattackgameCharacter::OnFire);
 
 	// Enable touchscreen input
 	//EnableTouchscreenMovement(PlayerInputComponent);
