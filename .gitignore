@@ -75,3 +75,8 @@ DerivedDataCache/*
 
 # Put the folder name of any content packs you added to the project here
 Content/StarterContent/*
+Content/AncientTreasures/*
+Content/FantasyVillage/*
+Content/InfinityBladeGrassLands/*
+Content/QuadrapedCreatures/*
+Content/Weapon_Pack/*
