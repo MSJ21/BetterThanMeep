@@ -52,6 +52,7 @@ public:
 	void SprintStart();
 	void SprintStop();
 	void Tick(float DeltaTime);
+	void NotFire();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 		bool IsSprinting;
@@ -61,6 +62,15 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Stamina")
 		float MaxStamina;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "FireRate")
+		bool IsFiring;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "FireRate")
+		float lastFired = 0;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "FireRate")
+		float cooldown = 0.1;
 
 protected:
 	virtual void BeginPlay();
